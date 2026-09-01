@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "card">
+        <h1>Menu</h1>
+        <div class="item">
+            <p>Fries : 100</p>
+        </div>
+        <div class="item">
+            <p>Friessoggy : 100</p>
+        </div>
+        <div class="item">
+            <p>Friescrunchy : 100</p>
+        </div>
+        <div class="item">
+            <p>Friesperiperi : 100</p>
+        </div>
+        <button onclick="click1()">Click me to add</button>
+        <div id="bill"></div>
+        
+    </div>
+</body>
+<style>
+    .card{
+        width: 300px;
+        height: 300px;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+        background-color: cadetblue;
+    }
+    .item{
+        
+        color: aquamarine;
+    }
+</style>
+<script>
+    const menu = {
+        Fries : 100,
+        Friessoggy : 100,
+        Friescrunchy : 100,
+        Friesperiperi : 100   
+    }
+    function click1(){
+        let a = prompt("enter the item");
+        let x = prompt("enter the quantity");
+        for( let i in menu){
+            if(a==i){
+                let total = menu[i]*x;
+                alert("total amount is " + total);
+            }
+            else{
+                alert("sahi se likh le");
+            }
+        }
+    }
+    document.getElementById("bill").innerHTML= `
+        <h3> Bill details</h3>;
+        <p>Total: ${total}</p>;
+
+    `
+</script>
+</html>
