@@ -3,9 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bus Booking System</title>
+    
 </head>
 <body>
-    
+    <div id="header">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhSHveFvoDDGe17F6mduUZCwHojP5tg9--NvfGSQWagQ&s=10" alt="Bus Icon">
+        <h1>Bus Booking System</h1>
+    </div>
+    <h2>User Information</h2>
+    <div id="main-section">
+        <form id="userForm">
+            <label for="name1">Name</label>
+            <input type="text" name="name1" id="name1" required>
+            
+            <label for="age">Age</label>
+            <input type="number" name="age" id="age" required>
+            
+            <label for="aadhar">Aadhaar No</label>
+            <input type="text" name="aadhar" id="aadhar" required>
+            
+            <label for="city">City</label>
+            <select name="city" id="city">
+                <option value="delhi">Delhi</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="kolkata">Kolkata</option>
+                <option value="chennai">Chennai</option>
+            </select>
+            
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date" required>
+        </form>
+    </div>
+    <div id="secondary-section">
+        <h2>Bus Information</h2>
+        <form id="busForm">
+            <input type="radio" name="bus" id="bus1" checked>
+            <label for="bus1">AC 1000</label>
+            <input type="radio" name="bus" id="bus2">
+            <label for="bus2">Non-AC 500</label>
+            <label for="seats">Seats</label>
+            <select name="seats" id="seats">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </form>
+        
+        <button type="submit" id="submitBtn">Submit</button>
+        <div id="card">
+
+        </div>
+    </div>
+
+    <script>
+        
+
+        document.addEventListener('click', function(event) {
+            if (event.target && event.target.matches('#submitBtn')) {
+                
+
+                const name = document.getElementById('name1').value;
+                const age = document.getElementById('age').value;
+                const aadhar = document.getElementById('aadhar').value;
+            
+                const city = document.getElementById('city').value;
+                const date = document.getElementById('date').value;
+                
+                const isAc = document.getElementById('bus1').checked;
+                const busType = isAc ? 'AC' : 'Non-AC';
+                const seats = parseInt(document.getElementById('seats').value, 10);
+
+                if (!name || !age || !date || !aadhar) {
+                    alert("Please fill in all required fields.");
+                    return;
+                }
+
+                const singleFare = isAc ? 1000 : 500;
+                const baseFare = singleFare * seats;
+                
+                const totalAmount = baseFare;
+                
+
+                
+                const cardContainer = document.getElementById('card');
+                
+                cardContainer.innerHTML = `
+                    <div class="ticket-wrapper">
+                        <div class="status-badge">Ticket Booked Successfully!</div>
+                        
+                        <div class="ticket-box">
+                            <h3>Bus Boarding Ticket</h3>
+                            
+                            <div class="row"><span>Passenger:</span> <span>${name} </span></div>
+                           
+                            <div class="row"><span>Destination:</span> <span>${city}</span></div>
+                            <div class="row"><span>Travel Date:</span> <span>${date}</span></div>
+                            <div class="row"><span>Bus Type:</span> <span>${busType}</span></div>
+                            <div class="row"><span>Seats:</span> <span>${seats}</span></div>
+                        </div>
+
+                        <div class="bill-box">
+                            <h3>Payment Receipt</h3>
+                            <div class="row"><span>Base Fare :</span> <span>₹${baseFare}</span></div>
+                            
+                            <div class="row total"><span>Total Amount:</span> <span>₹${totalAmount}</span></div>
+                        </div>
+
+                        
+                    </div>
+                `;
+            }
+        });
+    </script>
 </body>
 </html>
