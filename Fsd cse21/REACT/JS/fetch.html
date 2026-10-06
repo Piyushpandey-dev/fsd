@@ -22,21 +22,9 @@
     </style>
 </head>
 <body>
-    <div id="box">
-        <table id="table">
-            <thead>
-                <tr>
-                    <th> so.no</th>
-                    <th>Title</th>
-                    <th>Images</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                </tr>    
-            </thead>
-            <tbody id="data">
-
-            </tbody>
-        </table>
+    <div id="data">
+        
+            
     </div>
     <script >
         const ele = document.getElementById("data");
@@ -49,14 +37,14 @@
                 let row ="";
                 data.products.map((i,index)=>{
                     row += `
-                    <tr>
-                        <td>${index+1}</td>
-                        <td>${i.title}</td>
-                        <td><img src="${i.thumbnail}" ></td>
-                        <td>${i.category}</td>
-                        <td>${i.price}</td>
+                    <div class = "card">
                         
-                    </tr>
+                        <h2>${i.title}</h2>
+                        <<img src="${i.thumbnail}" >
+                        <div>${i.category}</div>
+                        <div>${i.price}</div>
+                        
+                    </div>
                     `;
                     
                 });
